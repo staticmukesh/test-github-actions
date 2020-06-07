@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"os"
 	"text/template"
 	"time"
@@ -19,13 +18,13 @@ type tmplData struct {
 	Time string
 }
 
-func main() {
+func generate() error {
 	file, err := os.Create("time.go")
 	if err != nil {
-		log.Fatalln("failed to create file", err)
+		return err
 	}
 
-	tmpl.Execute(file, tmplData{
+	return tmpl.Execute(file, tmplData{
 		Time: time.Now().String(),
 	})
 }
