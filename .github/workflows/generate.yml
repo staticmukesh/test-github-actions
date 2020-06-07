@@ -1,0 +1,11 @@
+name: generate
+on:
+  push:
+    branches: [ master ]
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Hello world
+      run: echo Hello, world!
