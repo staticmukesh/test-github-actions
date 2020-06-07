@@ -6,6 +6,12 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Hello world
-      run: echo Hello, world!
+    - name: Set up Go environment
+      uses: actions/setup-go@v1
+    - name: Checkout master branch
+      uses: actions/checkout@v2
+    - name: Generate time.go
+      run: go run ./...
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Update time.go file
